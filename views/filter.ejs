@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Kategória szűrés</h1>
+    <form action="/filter" method="get">
+        <select name="category">
+            <option value="elektronika" <%= category === 'elektronika' ? 'selected' : '' %>>elektronika</option>
+            <option value="ruházat" <%= category === 'ruházat' ? 'selected' : '' %>>ruházat</option>
+            <option value="könyv" <%= category === 'könyv' ? 'selected' : '' %>>könyv</option>
+            <option value="játék" <%= category === 'játék' ? 'selected' : '' %>>játék</option>
+        </select>
+ 
+        <button type="submit">Szűrés</button>
+    </form>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Termék neve</th>
+                <th>Kategória</th>
+                <th>Ár</th>
+                <th>Raktárkészlet</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% category.forEach(a => { %>
+                <tr class="<%= a.stock === 0 ? 'kifogyott' : '' %>">
+                    <td><%= a.name %></td>
+                    <td><%= a.category %></td>
+                    <td><%= a.price %> Ft</td>
+                    <td class="<%= a.stock < 5 ? 'kevesvan' : '' %>">
+                        <%= a.stock %>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <br>
+    <a href="/">Főoldal</a>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Új termék</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Új termék</h1>
+ 
+    <form action="/new" method="post">
+        <label>Termék neve:</label>
+        <input type="text" name="name">
+
+        <br>
+        <br>
+ 
+        <label>Kategória:</label>
+        <select name="category">
+            <option value="elektronika">elektronika</option>
+            <option value="ruházat">ruházat</option>
+            <option value="könyv">könyv</option>
+            <option value="játék">játék</option>
+        </select>
+
+        <br>
+        <br>
+ 
+        <label>Ár:</label>
+        <input type="number" name="price">
+
+        <br>
+        <br>
+ 
+        <label>Raktárkészlet:</label>
+        <input type="number" name="stock">
+
+        <br>
+        <br>
+ 
+        <button type="submit">Felvétel</button>
+    </form>
+ 
+    <% if (locals.sikeres) { %>
+        <p style="color: green;">Sikereseen fel lett véve</p>
+    <% } %>
+ 
+    <br>
+    <a href="/">Főoldal</a>
+</body>
+</html>
